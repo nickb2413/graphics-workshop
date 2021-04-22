@@ -15,13 +15,15 @@ void main() {
     vec2 squareCoord = (3.0 + seed / 4.0) * (6.0 * seed / seed + 3.0) *
                         gl_FragCoord.xy / resolution.y + vec2(time);
     vec2 loc = fract(squareCoord);
-    color = vec3(smoothstep(-0.05 * seed, 0.05 * seed, seed * loc.y - loc.x));
+    color = vec3(smoothstep(seed * -0.05, 0.05, seed * loc.y - seed * loc.x));
 
     // 2. Uncomment these lines to invert some of the triangles
     vec2 cell = squareCoord - loc;
-    if (mod(seed * cell.y - cell.x, 2.0) == 1.0) {
-        color = 1.0 - color * vec3(seed, seed, seed);
-        }
+    if (mod(cell.x + seed * cell.y, 2.0) == 1.0) 
+    {
+        color = 1.0 - color;
+    }
+
 
     // 3. Uncomment these lines to produce interesting colors
     float a = mod(6.0 * cell.x + 4.0 * cell.y, 9.0) / 9.0;
