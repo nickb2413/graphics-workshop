@@ -12,7 +12,8 @@ void main() {
     color.z += abs(sin(time));
 
     // 1. Uncomment these lines to draw triangles
-    vec2 squareCoord = (3.0 + seed / 4.0) * (6.0 * seed / seed + 3.0) * gl_FragCoord.xy / resolution.y + vec2(time);
+    vec2 squareCoord = (3.0 + seed / 4.0) * (6.0 * seed / seed + 3.0) *
+                        gl_FragCoord.xy / resolution.y + vec2(time);
     vec2 loc = fract(squareCoord);
     color = vec3(smoothstep(-0.05 * seed, 0.05 * seed, seed * loc.y - loc.x));
 
