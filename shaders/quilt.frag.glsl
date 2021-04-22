@@ -12,14 +12,13 @@ void main() {
     color.z += abs(sin(time));
 
     // 1. Uncomment these lines to draw triangles
-    vec2 squareCoord = (3.0 + seed / 4.0) * (6.0 * seed / seed + 3.0) *
-                        gl_FragCoord.xy / resolution.y + vec2(time);
+    vec2 squareCoord = 15.0 * (2.0 + log(0.01 + seed)) * gl_FragCoord.xy / resolution.y + vec2(time);
     vec2 loc = fract(squareCoord);
-    color = vec3(smoothstep(seed * -0.05, 0.05, seed * loc.y - seed * loc.x));
+    color = vec3(smoothstep(-0.05, 0.05, (seed + 1.0) * loc.y - loc.x));
 
     // 2. Uncomment these lines to invert some of the triangles
     vec2 cell = squareCoord - loc;
-    if (mod(cell.x + seed * cell.y, 2.0) == 1.0) 
+    if (mod(cell.x + cell.y + seed, 2.0) == 1.0)
     {
         color = 1.0 - color;
     }
