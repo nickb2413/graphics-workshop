@@ -15,6 +15,7 @@ vec3 illuminate(vec3 lightPosition) {
     float intensity = 1.0 / dot(wi, wi); // inverse-square law
     vec3 diffuse = kd * max(dot(normalize(wi), normalize(vNormal)), 0.0);
 
+    // specular highlights code
     vec3 wo = normalize(eye - vPosition);
     vec3 r = reflect(normalize(wi), normalize(vNormal));
     float shinyDot = pow(abs(dot(r, wo)), 0.8 * shininess * shininess);
