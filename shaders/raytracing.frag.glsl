@@ -86,7 +86,7 @@ Hit intersect(Ray r) {
 // Compute lighting from one light
 vec3 illuminate(vec3 lightPosition, vec3 pos, vec3 wo, Hit h) {
     // shadow simulation
-    Ray light = Ray(lightPosition, pos);
+    Ray light = Ray(pos, lightPosition);
     if (intersect(light).time < 1.0)
     {
         return vec3(0.0);
