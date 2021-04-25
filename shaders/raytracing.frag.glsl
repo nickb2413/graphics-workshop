@@ -87,11 +87,11 @@ Hit intersect(Ray r) {
 vec3 illuminate(vec3 lightPosition, vec3 pos, vec3 wo, Hit h) {
     // shadow simulation
     Ray light = Ray(pos, lightPosition);
-    if (intersect(light).normal != vec3(0.0))
+    if (intersect(light).time < 1.0)
     {
         return vec3(0.0);
     }
-    
+
     vec3 wi = lightPosition - pos;
     vec3 kd = h.material.kd;
     if (h.material.checker) {
