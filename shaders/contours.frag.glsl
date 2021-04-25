@@ -43,6 +43,8 @@ void main() {
     color = mix(color, blue, step(0.25, value));
     color = mix(color, dots, step(0.35, value));
     color = mix(color, vec3(1.0), step(0.45, value));
+    
+    // test 
 
     // Edge estimation
     float vn = abs(dot(normalize(vNormal), normalize(vPosition - eye)));
