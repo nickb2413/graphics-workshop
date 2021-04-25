@@ -31,7 +31,7 @@ vec3 illuminate(vec3 lightPosition) {
     //    exponent of the shininess coefficient. (Make sure your
     //    result is not negative!)
 
-    float shinyDot = pow(abs(dot(r, wo)), shininess);
+    float shinyDot = pow(max(dot(r, wo), 0.0), shininess);
 
     //  - Multiply the result by specular coefficient ks.
 
