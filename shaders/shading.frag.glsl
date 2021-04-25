@@ -19,7 +19,7 @@ vec3 illuminate(vec3 lightPosition) {
     //    camera, by subtracting vPosition from eye and calling
     //    normalize().
 
-    vec3 wo = normalize(eye - vPosition);
+    vec3 wo = normalize(vPosition - eye);
 
     //  - Compute the reflected incident light vector r, by reflecting
     //    normalize(wi) about normalize(vNormal) using the reflect()

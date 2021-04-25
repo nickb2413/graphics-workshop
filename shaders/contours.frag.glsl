@@ -16,9 +16,9 @@ vec3 illuminate(vec3 lightPosition) {
     vec3 diffuse = kd * max(dot(normalize(wi), normalize(vNormal)), 0.0);
 
     // specular highlights code
-    vec3 wo = normalize(eye - vPosition);
+    vec3 wo = normalize(vPosition - eye);
     vec3 r = reflect(normalize(wi), normalize(vNormal));
-    float shinyDot = pow(abs(dot(r, wo)), 0.8 * shininess * shininess);
+    float shinyDot = pow(max(dot(r, wo), 0.0), pow(5.0, sqrt(shininess)));
     vec3 specular = ks * shinyDot;
 
     return intensity * (diffuse + specular);
@@ -43,8 +43,6 @@ void main() {
     color = mix(color, blue, step(0.25, value));
     color = mix(color, dots, step(0.35, value));
     color = mix(color, vec3(1.0), step(0.45, value));
-    
-    // test 
 
     // Edge estimation
     float vn = abs(dot(normalize(vNormal), normalize(vPosition - eye)));
